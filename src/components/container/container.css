@@ -1,0 +1,10 @@
+.position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host {
+  height: 100%;
+  width: 100%;
+}
