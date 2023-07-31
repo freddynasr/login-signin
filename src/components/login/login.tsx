@@ -1,5 +1,5 @@
 import { Component, h, State, Event, EventEmitter } from '@stencil/core';
-import eye from 'bootstrap-icons/icons/eye-fill.svg';
+import eye from 'bootstrap-icons/icons/ear-fill.svg';
 import eyeSlash from 'bootstrap-icons/icons/eye-slash-fill.svg';
 
 @Component({
@@ -37,6 +37,7 @@ export class Login {
   }
 
   onRegister() {
+    console.log('register');
     this.register.emit();
   }
 

@@ -13,8 +13,8 @@
 }
 
 .form-input-material {
-  --input-default-border-color: white;
-  --input-border-bottom-color: white;
+  --input-default-border-color: #000;
+  --input-border-bottom-color: #000;
   width: 100%;
 }
 .username {

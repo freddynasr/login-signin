@@ -1,24 +1,23 @@
 import { Component, Method, Prop, State, h, EventEmitter, Event, Watch } from '@stencil/core';
-import { FETCH_API } from '../global/Fetch-API';
 
 @Component({
   tag: 'jji-signup-comp',
   styleUrl: './signup-comp.css',
-  shadow: true,
+  // shadow: true,
 })
 export class SignUpComp {
   //Emitted when the form data is successfully submitted.
   //Contains the form data as an object.
   @Event() formDataSubmitted: EventEmitter<{ username: string; email: string; password: string; confirmPassword: string }>;
 
-  @Event() login: EventEmitter<any>;
+  @Event() toLogin: EventEmitter<any>;
 
   onSignUp() {
     this.formDataSubmitted.emit();
   }
 
   onLogin() {
-    this.login.emit();
+    this.toLogin.emit();
   }
   //Event listener for the 'body:click' event...specially to know the sign in link is clicked.
   // @Listen('body:click')
@@ -99,7 +98,7 @@ export class SignUpComp {
   }
 
   //Method to handle form submission
-  async handleSubmit(event: Event) {
+  handleSubmit(event: Event) {
     event.preventDefault();
 
     //Check if passwords match
@@ -122,26 +121,6 @@ export class SignUpComp {
       //Emit the form data through the custom event
       this.formDataSubmitted.emit(formData);
 
-      //Perform the API call or data storage logic here
-      try {
-        const response = await fetch(`${FETCH_API}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-        if (response.ok) {
-          //Passwords match and the form data is submitted successfully
-          //Redirect to the success page
-          window.location.href = '/success.html';
-        } else {
-          console.log(response);
-        }
-      } catch (error) {
-        console.error('Error submitting form:', error);
-      }
-
       //Set formSubmitted to true after successful submission
       this.formSubmitted = true;
     } else {
@@ -160,7 +139,7 @@ export class SignUpComp {
     if (this.opened) {
       mainContent = [
         //HTML code for backdrop and form
-        <div class="backdrop" onClick={this.closeSignUpComp.bind(this)}></div>,
+        // <div class="backdrop" onClick={this.closeSignUpComp.bind(this)}></div>,
         //Form elements
         <div>
           <form class="form">

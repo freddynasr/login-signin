@@ -58,7 +58,7 @@ declare namespace LocalJSX {
     }
     interface JjiSignupComp {
         "onFormDataSubmitted"?: (event: JjiSignupCompCustomEvent<{ username: string; email: string; password: string; confirmPassword: string }>) => void;
-        "onLogin"?: (event: JjiSignupCompCustomEvent<any>) => void;
+        "onToLogin"?: (event: JjiSignupCompCustomEvent<any>) => void;
         "opened"?: boolean;
         "titl"?: string;
     }
